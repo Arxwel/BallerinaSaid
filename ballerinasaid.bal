@@ -22,6 +22,7 @@ public function postTweet(string quote) {
         if (result is twitter:Status) {
             // On affiche l'ID du tweet créé ainsi que son contenu dans le terminal
             io:println("Tweet ID : ", result.id);
+            io:println("Tweet URL : https://twitter.com/i/status/",result.id);
             io:println("Tweet : ", result.text);
         } else {
         // Si l'envoie est un echec, on affiche le message d'erreur dans le terminal
@@ -81,3 +82,4 @@ service quote on new http:Listener(9000) {
         http:Client clientE = new ("https://api.kanye.rest");
         getQuote(clientE, caller);
     }
+}
